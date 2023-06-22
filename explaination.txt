@@ -1,0 +1,38 @@
+In the provided code, the Minimax algorithm is applied in the `minimax()`
+ function to determine the best move for the AI player (player "X"). 
+ The function recursively explores all possible moves and their outcomes to evaluate the best score
+  for the current player.
+
+Here's how the Minimax algorithm is applied in the code:
+
+1. The `minimax()` function takes two parameters: `depth` and `maximizing_player`. 
+The `depth` represents the depth of the current recursion, and `maximizing_player` 
+is a boolean flag indicating whether the current player is trying to maximize their score 
+(True) or minimize their score (False).
+
+2. At the start of the function, the `scores` dictionary is defined, 
+which assigns scores to different game outcomes. "X" is assigned a score of 1 (maximizing player), 
+"O" is assigned a score of -1 (minimizing player), and "Draw" is assigned a score of 0.
+
+3. The function first checks if there is a winner or a draw using the `check_winner()`
+ function. If there is a winner or a draw, the corresponding score is returned.
+
+4. If the `maximizing_player` is True, it means it is "X" player's turn. In this case,
+ the function initializes `best_score` to negative infinity and iterates over each available move. 
+ It makes the move on the board, recursively calls `minimax()` with `maximizing_player` set to False 
+ for the next player, and stores the resulting score in the `score` variable. After that, it undoes 
+ the move on the board and updates `best_score` to the maximum of `score` and `best_score`.
+
+5. If the `maximizing_player` is False, it means it is "O" player's turn. The logic is similar 
+to the maximizing player, but in this case, the `best_score` is initialized to positive infinity, 
+and the minimum score is updated.
+
+6. Finally, the function returns `best_score` after evaluating all available moves and their resulting scores.
+
+The `get_best_move()` function is responsible for selecting the best move for the AI player 
+based on the Minimax algorithm. It iterates over each available move, makes the move on the
+ board, calls `minimax()` with `maximizing_player` set to False for the opponent player, stores 
+ the resulting score, undoes the move, and selects the move with the highest score.
+
+By using the Minimax algorithm, the AI player ("X") evaluates all possible moves and chooses
+ the move that leads to the best possible outcome, assuming the opponent player ("O") plays optimally as well.
